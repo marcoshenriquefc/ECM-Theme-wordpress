@@ -30,7 +30,7 @@ function redirectToLogin() {
 	ob_start(); // Inicia o buffer de saída
 
 	wp_redirect(home_url());
-	
+
 	ob_end_flush(); // Limpa o buffer e envia a saída para o navegador
 	exit();
 }
@@ -70,19 +70,17 @@ function validItemOnUser($user_id, $item_id) {
 
 
 <?php
-	$user_id = '';
+$user_id = '';
 
-	if (is_user_logged_in()) {
-		$user_id = get_current_user_id();
+if (is_user_logged_in()) {
+	$user_id = get_current_user_id();
+}
+else {
+	redirectToLogin();
+}
 
-		// print_r($user_id);
-	}
-	else {
-		redirectToLogin();
-	}
-
-	validItemOnUser($user_id, get_the_ID());
-	get_header(); 
+validItemOnUser($user_id, get_the_ID());
+get_header();
 ?>
 
 <?php
@@ -103,12 +101,12 @@ function getProductImages($product, $product_id) {
 
 	$gallery_attachment_ids = get_post_meta($product_id, '_product_image_gallery', true);
 
-	
+
 	$galery_images_list = [];
 	if ($gallery_attachment_ids) {
 		// Converta os IDs da galeria em uma matriz
 		$gallery_attachment_ids = explode(',', $gallery_attachment_ids);
-	
+
 		// Itere sobre os IDs da galeria e obtenha as URLs das imagens
 		foreach ($gallery_attachment_ids as $gallery_image_id) {
 			$gallery_image_url = wp_get_attachment_image_url($gallery_image_id, 'full');
@@ -123,32 +121,16 @@ function getProductImages($product, $product_id) {
 		'galery' 		=> $galery_images_list
 	];
 
-
-		
-	// Substitua 'field_name' pelo nome do seu campo ACF e $product_id pelo ID do seu produto ou variação
-	$field_value = get_field('galery_variation', $product_id);
-
-	// Verifique se o valor do campo está presente
-	if ($field_value) {
-		// Faça algo com o valor obtido
-		print_r($field_value);
-	} else {
-		// Caso o valor não esteja presente
-		echo 'Campo não preenchido ou não encontrado.';
-	}
-
-
 	return $images_data;
 }
 
 function getProductVariation($product) {
-	if ($product->is_type('variable')){
+	if ($product->is_type('variable')) {
 		$variation_ids = $product->get_children();
 
-
 		if (!empty($variation_ids)) {
-
 			$variation_list = [];
+			$product_name = $product->get_name();
 
 			foreach ($variation_ids as $variation_id) {
 				// Objeto da variação
@@ -158,31 +140,38 @@ function getProductVariation($product) {
 				// Atributos da variação
 				$variation_attributes = $variation_obj->get_variation_attributes();
 
+				$field_value = get_field('galery_variation', get_the_ID());
+
+				$filtered_array = array_filter($field_value, function($objeto) use ($variation_id) {
+					$objetoCampoObj = strval($objeto['campo_obj']);
+					return $objetoCampoObj === strval($variation_id);
+				}, ARRAY_FILTER_USE_BOTH);
+
+				$variation_name = $variation_obj->get_name();
+				$clean_variation_name = str_replace($product_name . ' - ', '', $variation_name);
 				
-				echo '<pre>';
-				echo '------------------';
-				print_r($variation_id);
-				print_r($variation_description);
-				echo '</pre>';
-				
-				$variation_list[] = $variation_attributes;
+				$galeria_de_imagens = array_merge(...array_column($filtered_array, 'galeria_de_imagens'));
+
+				$variation_data_prod = [
+					'id' => $variation_id,
+					'name' => $clean_variation_name,
+					'description' => $variation_description,
+					'gallery' => $galeria_de_imagens,
+				];
+				// $variation_list[] = $variation_data_prod;
+				$variation_list[] = $variation_data_prod;
 			}
 
-			$new_array = [];
-			foreach ($variation_list as $item) {
-				// Obter o valor associado dinamicamente
-				// Obtemos o primeiro valor do array associativo
-				$dynamic_value = reset($item);
-			
-				// Adicionar o valor ao novo array
-				$new_array[] = $dynamic_value;
-			}
-
-			return $new_array;	
+			return $variation_list;
 		}
 	}
 
 	return [];
+}
+
+function filterById($objeto, $currentId) {
+	$objetoCampoObj = strval($objeto['campo_obj']);
+    return $objetoCampoObj === $currentId;
 }
 
 
@@ -192,7 +181,7 @@ while (have_posts()) :
 
 	// Inicialize o produto do WooCommerce
 	$product = wc_get_product(get_the_ID());
-	
+
 	// Chama a função para exibir os grupos de campos
 	$field_groups_output = wapf_display_field_groups_for_product($product);
 	$variation_data = wapf_get_field_groups_of_product($product);
@@ -201,6 +190,11 @@ while (have_posts()) :
 	$images = getProductImages($product, get_the_ID());
 
 	$variation_list = getProductVariation($product);
+
+
+	// echo '<pre>';
+	// print_r($variation_list);
+	// echo '</pre>';
 
 	foreach ($variation_data as $fieldGroup) {
 		// Loop através dos campos
@@ -215,21 +209,23 @@ while (have_posts()) :
 	}
 ?>
 
-<?php //foreach ($choices as $key => $value) : ?>
-<?php //endforeach ?>
+	<?php //foreach ($choices as $key => $value) : 
+	?>
+	<?php //endforeach 
+	?>
 
 
-<?php
+	<?php
 	// **** CONTEÚDO SOBRE A UNIDADE AQUI **** //
 	// the_content();
-?>
+	?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<main id="main-base-account" class="center-section full-width">
 			<section id="content-account" class="product-area-content">
 				<section id="build-area">
 					<header class="build-header">
-						<p class="build-title"><?php echo$title_item ?> </p>
+						<p class="build-title"><?php echo $title_item ?> </p>
 
 						<button class="return-button" onclick="enableVariationChoice()">
 							<svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 13 12" fill="none">
@@ -242,9 +238,10 @@ while (have_posts()) :
 					<hr>
 
 					<section class="select-vatiation-buttons">
-						<?php foreach($variation_list as $item_variation) : ?>
-							<button class="variation-info" onclick="selectCombo('<?php echo $item_variation ?>')">
-								<?php echo $item_variation ?>
+						<?php foreach ($variation_list as $item_variation) : ?>
+							<?php //echo json_encode($item_variation) ?>
+							<button class="variation-info" onclick="selectCombo(<?php echo htmlspecialchars(json_encode($item_variation), ENT_QUOTES, 'UTF-8'); ?>)">
+								<?php echo $item_variation['name']; ?>
 							</button>
 						<?php endforeach ?>
 					</section>
@@ -260,32 +257,29 @@ while (have_posts()) :
 						</div>
 
 						<div class="build-gallery">
-							<p class="gallery-title">GALERIA</p>
+							<div id="galery-product-area">
+								<p class="gallery-title">GALERIA</p>
 
-							<?php if(count($images['galery']) > 0) : ?>
 								<div class="build-gallery-images">
-									<?php foreach($images['galery'] as $current_image_galery) : ?>
-										<a href="<?php echo $current_image_galery ?>" target="_blank">
-											<img src="<?php echo $current_image_galery ?>" alt="" class="gallery-image">
-										</a>
-									<?php endforeach ?>
 								</div>
-							<?php endif ?>
+							</div>
 
-							<!-- <div class="build-description">
+							<div class="build-description">
 								<p class="product-text">DESCRIÇÃO</p>
 
+								<div class="build-description-text">
+								</div>
 								<?php
-									//woocommerce_variable_add_to_cart();
+								//woocommerce_variable_add_to_cart();
 								?>
-							</div> -->
+							</div>
 
 							<div class="build-products">
 								<p class="product-text">QUERO ADICIONAR TAMBÉM</p>
 								<div class="products-items">
 									<?php
-										woocommerce_variable_add_to_cart();
-										do_action('woocommerce_single_product');
+									woocommerce_variable_add_to_cart();
+									do_action('woocommerce_single_product');
 									?>
 								</div>
 							</div>
@@ -295,17 +289,6 @@ while (have_posts()) :
 			</section>
 		</main>
 	</article>
-
-
-	<?php
-		// $variation_galery = [
-		// 	[
-		// 		['id'] => 'x',
-		// 		['name'] => 'name',
-		// 		['galery_images'] => []
-		// 	],
-		// ]
-	?>
 
 	<script>
 		const $selectNode = document.querySelector('.build-products #select-woocommerce-combo select');
@@ -330,38 +313,87 @@ while (have_posts()) :
 		function updateTitle(title) {
 			const $title = document.querySelector('.wapf-options-total');
 
-			if ($title ) {
+			if ($title) {
 				$title.innerHTML = title;
 			}
 		}
 
 		function selectCombo(data) {
-			const optionToSelect = Array.from($selectNode.options).find(option => option.value === data);
+			console.log(data)
+			const name = data.name;
+			const gallery = data.gallery;
+			const description = data.description;
+
+			const optionToSelect = Array.from($selectNode.options).find(option => {
+				return option.value.toLowerCase() === name.toLowerCase();
+			})
 
 			if (optionToSelect) {
-				$selectNode.value = data;
+				$selectNode.value = name.toLowerCase();
 				const event = new Event('change', {
 					bubbles: true
 				});
 				$selectNode.dispatchEvent(event);
 				// $selectNode.dispatchEvent(event);
 
-				updateTitle(data);
+				updateTitle(name.toLowerCase());
 				enableBuildContent();
 			}
+
+			renderInfoVariation({title: name, description: description});
+			selectGalery(gallery);
+		}
+
+		function selectGalery(galeryList = []) {
+			const $galeryArea = document.querySelector('#galery-product-area');
+			if(galeryList.length < 1) {
+				$galeryArea.style.display = 'none';
+				return
+			}
+			const $imagesArea = $galeryArea.querySelector('.build-gallery-images');
+
+			// Usando reduce para criar uma string HTML concatenando cada imagem
+			const imagesHTML = galeryList.reduce((html, imageURL) => {
+				return html + `
+					<a href="${imageURL}" target="_blank">
+						<img src="${imageURL}" alt="Imagem do empreendimento" class="gallery-image">
+					</a>
+				`;
+			}, '');
+
+			// Definindo a string HTML no conteúdo da área de imagens
+			$galeryArea.style.display = 'block';
+			$imagesArea.innerHTML = imagesHTML;
+		}
+
+		function renderInfoVariation(info) {
+			const $title = document.querySelector('.build-preview .build-classification');
+			const $description = document.querySelector('.build-description-text');
+			const $descriptionArea = document.querySelector('.build-description');
+			if(!info.description) {
+				$descriptionArea.style.display = 'none';
+			}
+			else {
+				$descriptionArea.style.display = 'block';
+			}
+
+			$title.innerHTML = info.title;
+			$description.innerHTML = info.description;
 		}
 
 		function cleanCoise() {
-			const $buttonReset = document.querySelector('reset_variations')
+			const $buttonReset = document.querySelector('.reset_variations')
 
-			$buttonReset.dispatchEvent(event);
+			if($buttonReset) {
+				$buttonReset.dispatchEvent(event);
+			}
 		}
 
 		function enableVariationChoice() {
 			const $variationHtml = document.querySelector('.select-vatiation-buttons');
 			const $buildContentHtml = document.querySelector('.build-content');
 
-			
+
 			$variationHtml.classList.remove('disabled')
 			$buildContentHtml.classList.add('disabled')
 			cleanCoise();
@@ -406,7 +438,7 @@ do_action('woocommerce_after_main_content');
 
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
 
-get_footer(); 
+get_footer();
 ?>
 
 
@@ -415,17 +447,19 @@ get_footer();
 	#main-footer {
 		display: none;
 	}
-    #nav-menu {
-        padding-bottom: 0;
-    }
-    .social-media-area {
-        display: none;
-    }
+
+	#nav-menu {
+		padding-bottom: 0;
+	}
+
+	.social-media-area {
+		display: none;
+	}
 
 	table.variations,
 	table.variations td,
 	table.variations th,
-	.wapf-product-totals .wapf--inner{
+	.wapf-product-totals .wapf--inner {
 		opacity: 0;
 		width: 0;
 		height: 0;
