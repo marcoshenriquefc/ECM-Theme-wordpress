@@ -1,0 +1,120 @@
+#experience-area{
+    display: flex;
+    flex-direction: column;
+
+    gap: remConverter(32);
+    .title-base {
+        text-align: center;
+        font-size: remConverter(32);
+        font-weight: 400;
+        span {
+            font-family: "scotland", cursive;
+            color: #8F6244;
+            font-weight: 600;
+            font-size: remConverter(70);
+            line-height: 85%;
+            letter-spacing: normal;
+            font-weight: 200;
+        }
+    }
+
+    .subtitle {
+        font-size: remConverter(20);
+        text-align: center;
+    }
+
+    .galery-horizontal {
+        display: flex;
+
+        .image-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: remConverter(550);
+            flex: 1;
+
+            transition: all .5s;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            &:hover {
+                flex: 12;
+                margin: 0 remConverter(8);
+
+                & ~ .image-area {
+                    filter: blur(2px) grayscale(.6);
+                }
+            }
+        }
+    }
+
+    .galery-double {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+        gap: remConverter(32);
+
+        .image-area {
+            width: 100%;
+            height: remConverter(400);
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+@media(max-width: remConverter(750)) {
+    #experience-area{
+        .galery-horizontal {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            .image-area {
+                height: remConverter(350);
+                &:hover {
+                    margin: 0;
+                    & ~ .image-area {
+                        filter: none;
+                    }
+                }
+            }
+        }
+
+        .galery-double {
+            gap: remConverter(24);
+        }
+    }
+}
+@media(max-width: remConverter(500)) {
+    #experience-area{
+        // .title-base {
+        //     font-size: remConverter(24);
+        //     span {
+        //         font-size: remConverter(50);
+        //     }
+        // }
+
+        .galery-horizontal {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            .image-area {
+                height: remConverter(250);
+            }
+        }
+
+        .galery-double {
+            gap: remConverter(20);
+            .image-area {
+                height: remConverter(200);
+            }
+        }
+    }
+}

@@ -1,0 +1,68 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+
+#form-section {
+  padding-top: $size-40px;
+  padding-bottom: $size-40px;
+
+  .center-section {
+    display: flex;
+    gap: $size-20px;
+
+    .image-area {
+      flex: 1;
+      width: 100%;
+      @include imageCover;
+      img {
+        width: fit-content;
+        max-width: remConvert(420);
+        max-height: remConvert(365);
+      }
+    }
+
+    .form-area {
+      flex: 1;
+      width: 100%;
+      
+      .subtitle {
+        color: $color-white-text;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: $size-12px; 
+        padding: $size-16px 0;
+
+        .label-base{
+          font-weight: $weight-regular;  
+          .buttonBase {
+            display: inline;
+            color: $color-secundary-normal;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+@media screen and (max-width: $media-medium) {
+
+  #form-section {
+    .center-section {
+      flex-direction: column;
+    }
+  }
+}
+
+@media screen and (max-width: $media-small) {
+  #form-section {
+    .center-section {
+      .image-area {
+        display: none;
+      }
+    }
+  }
+}

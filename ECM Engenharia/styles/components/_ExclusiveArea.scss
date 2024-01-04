@@ -1,0 +1,125 @@
+#exclusive {
+  display: flex;
+  flex-direction: column;
+  gap: remConverter(40);
+
+  max-width: remConverter(770);
+
+  .info-area {
+    display: flex;
+    gap: remConverter(40);
+
+    .text-info {
+      display: flex;
+      flex-direction: column;
+      gap: remConverter(40);
+      flex: 1;
+      width: 100%;
+      max-width: remConverter(350);
+
+      h1 {
+        font-size: remConverter(40);
+        font-weight: 400;
+      }
+
+      p {
+        font-size: remConverter(20);
+        font-weight: 300;
+        color: #6D6D6D;
+      }
+    }
+
+    .icon-area {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 1;
+
+      justify-content: space-around;
+      gap: remConverter(20) remConverter(32);
+
+      .card-icon {
+        flex-basis: remConverter(160);
+        // flex-grow: 1;
+
+        display: flex;
+
+        padding: remConverter(12) remConverter(20);
+        flex-direction: column;
+        align-items: center;
+        gap: remConverter(4);
+
+        transition: all .3s;
+
+        justify-content: space-around;
+        cursor: pointer;
+
+        .icon-area {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          width: remConverter(75);
+          max-height: remConverter(70);
+
+          img {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        h1 {
+          font-size: remConverter(20);
+          text-align: center;
+          font-weight: 275;
+        }
+
+        &.active {
+          border-radius: remConverter(8);
+          background-color: #fff;
+          box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+        }
+
+        &:hover {
+          border-radius: remConverter(8);
+          box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+          ;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:remConverter(750)) {
+  
+  #exclusive {
+    .info-area {
+      flex-direction: column-reverse;
+  
+      .text-info {
+        max-width: none;
+  
+        .button {
+          width: fit-content;
+        }
+      }
+  
+      .icon-area {
+        gap: remConverter(4);
+  
+        .card-icon {
+          padding: remConverter(8) remConverter(12);
+  
+          .icon-area {
+            width: remConverter(65);
+            max-height: remConverter(60);
+          }
+  
+          h1 {
+            font-size: remConverter(16);
+          }
+        }
+      }
+    }
+  }
+}

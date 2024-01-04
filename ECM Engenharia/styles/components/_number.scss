@@ -1,0 +1,45 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+
+#numbers-section {
+    background: linear-gradient(180deg, rgba(50, 48, 49, 0) 60%, #333 60%);
+    padding-top: $size-40px;
+    padding-bottom: $size-40px;
+    .main-title {
+        text-align: center;
+        margin-bottom: $size-32px;
+    }
+
+    .number-list {
+        display: grid;
+        grid-template-columns: repeat( auto-fit, minmax(200px, 1fr));
+        
+        background-color: $color-primary-dark;
+        border-radius: $size-20px;
+        padding: $size-24px $size-20px;
+        gap: $size-16px;
+        box-shadow: $shadow-base;
+        .item {
+            display: flex;
+            align-items: center;
+            gap: $size-8px;
+            color: $color-white-button;
+
+            .title-list {
+                font-size: remConvert(48);
+            }
+            .text-list {
+                font-size: $size-16px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-small) {
+    #numbers-section {
+        .number-list {
+            gap: $size-24px;
+        }
+    }
+}

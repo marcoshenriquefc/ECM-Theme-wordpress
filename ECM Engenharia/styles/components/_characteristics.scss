@@ -1,0 +1,45 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+
+#characteristics {
+    padding: $size-40px 0;
+
+    .cards-area {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: $size-12px;
+
+        .card-item {
+            display: flex;
+            gap: $size-4px;
+            min-width: fit-content;
+
+            .icon {
+                width: $size-16px;
+                height: $size-16px;
+            }
+            .text {
+                text-align: start;
+                font-size: $size-16px;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: $media-medium){
+    
+    #characteristics {
+        .cards-area {
+            grid-template-columns: repeat( auto-fit, minmax(remConvert(200), 1fr) );
+        }
+    }
+}
+@media screen and (max-width: $media-small){
+    #characteristics {
+        .cards-area {
+            gap: $size-12px;
+        }
+    }
+}

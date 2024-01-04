@@ -1,0 +1,26 @@
+#plantas-area {
+    display: flex;
+    flex-direction: column;
+    gap: remConverter(32);
+    
+    margin-top: remConverter(40);
+    margin-bottom: remConverter(70);
+    align-items: center;
+    .plant-grid {
+        display: flex;
+        width: 100%;
+        gap: remConverter(32);
+
+        .text {
+            font-size: remConverter(20);
+        }
+
+        img {
+            width: 100%;
+        }
+
+        a {
+            margin: 0 auto;
+        }
+    }
+}

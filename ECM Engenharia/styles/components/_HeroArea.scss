@@ -1,0 +1,122 @@
+@import '../abstract/variable';
+
+#hero-section {
+    position: relative;
+    height: 100%;
+    min-height: 620px;
+
+    background-color: $color-black-background;
+
+    padding-top: $size-40px;
+    padding-bottom: 8.75rem;
+
+    z-index: 1;
+
+    #hero-content {
+        display: flex;
+        gap: $size-32px;
+        padding-top: $size-32px;
+        padding-bottom: $size-32px;
+        align-items: center;
+
+        .text-hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            flex:1;
+
+            gap: $size-32px;
+
+            .subtitle {
+                color: $color-secundary-normal;
+                font-weight: $weight-bold;
+                font-size: $size-16px;
+                margin-bottom: $size-8px;
+            }
+
+            .text {
+                color: $color-white-text;
+                font-size: $size-32px;
+                font-weight: $weight-regular;
+            }
+        }
+
+        .hero-image {
+            flex:1;
+            height: 100%;
+            filter: drop-shadow(0px 4px 18px rgba(0, 0, 0, 0.25));
+            img {
+                height: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
+
+    #background-video {
+        background-color: $color-black-background;
+        object-fit: cover;
+        opacity: .2 ;
+        filter: blur(2px) grayscale(.5);
+
+
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        
+        z-index: -1;
+    
+    }
+    // &::before {
+    //     background: linear-gradient(180deg, rgba(50, 48, 49, 0.4) 0%, rgba(50, 48, 49, 0.8) 100%);
+    //     z-index: -1;
+
+    //     display: block;
+    //     width: 100%;
+    //     height: 100%;
+    //     min-height: 620px;
+    // }
+}
+
+@media screen and (max-width: $media-medium) {
+    #hero-section {
+        padding-bottom: $size-40px;
+        min-height: 540px;
+        #hero-content {
+            gap: $size-16px;
+
+            .text-hero {
+                gap: $size-16px;
+
+                .text {
+                    font-size: $size-24px;
+                }
+            }
+
+            .hero-image {
+                img {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-small) {
+    #hero-section {
+        padding-bottom: 8.75rem;
+        #hero-content {
+            flex-direction: column;
+            .text-hero {
+                .subtitle {
+                    font-size: $size-12px;
+                }
+            }
+        }
+    }
+}

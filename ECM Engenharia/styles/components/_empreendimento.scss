@@ -1,0 +1,78 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+
+#empreendimento-section {
+  padding-top: $size-40px;
+  padding-bottom: $size-40px;
+  .main-title {
+    margin-bottom: $size-24px;
+    text-align: center;
+  }
+
+}
+
+.cards-empreendimento {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(450px, 1fr) );
+  gap: $size-32px $size-24px;
+  .card {
+    display: flex;
+    width: 100%;
+
+    gap: $size-12px;
+    padding: $size-20px $size-16px;
+    border: remConvert(2) solid $color-primary-dark;
+    border-radius: $size-16px;
+
+    .image-area {
+      width: 100%;
+      min-width: remConvert(200);
+
+      height: 100%;
+      min-height: remConvert(230);
+
+      border-radius: $size-8px;
+      overflow: hidden;
+      max-width: remConvert(390);
+      @include imageCover
+    }
+
+    .info-area {
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+      gap: $size-20px;
+      width: 100%;
+
+      .logotipo {
+        max-width: remConvert(150);
+        max-height: remConvert(45);
+      }
+      
+
+      .text {
+        color: $color-white-text;
+        @include maxTextLine(5)
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: $media-small) {
+  .cards-empreendimento {
+    display: flex;
+    flex-direction: column;
+    .card {
+      flex-direction: column;
+      width: 100%;
+
+      .image-area {
+        height: remConvert(120);
+        min-height: 0;
+      }
+    }
+  }
+}

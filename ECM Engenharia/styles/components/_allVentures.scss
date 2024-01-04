@@ -1,0 +1,49 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+
+#all-ventures {
+    padding: remConvert(50) 0;
+
+    .group-venture {
+        padding: $size-40px 0;
+
+        .title-box {
+            display: flex;
+            gap: $size-20px;
+            margin-bottom: $size-20px;
+
+            .title-venture {
+                color: $color-white-base;
+                font-size: $size-32px;
+            }
+        }
+    }
+
+    #info-area {
+        .about-venture {
+            background-color: $color-white-background;
+            padding: $size-40px $size-32px;
+            border-radius: $size-12px;
+            margin: 0 $size-20px;
+
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+
+            &.content-info {
+
+                .title {
+                    color: $color-black-base;
+                    font-size: $size-24px;
+                    margin-bottom: $size-16px;
+                }
+
+                .text {
+                    font-size: $size-16px;
+                    color: $color-black-base;
+                    max-width: none;
+                }
+            }
+        }
+
+    }
+}

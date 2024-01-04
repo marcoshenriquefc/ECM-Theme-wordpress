@@ -1,0 +1,23 @@
+#info-menu-empreendimento {
+    background-color: #1D1D1B;
+    padding: remConverter(24) 0;
+    .menu-area {
+        width: 100%;
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: remConverter(40);
+            list-style: none;
+            flex-wrap: wrap;
+
+            .menu-item {
+                font-size: remConverter(12);
+                a {
+                    text-decoration: none;
+                    color: #fcfcfc;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+// Size converte to REM
+$size-4px   : .25rem;
+$size-8px   : .5rem;
+$size-12px  : .75rem;
+
+$size-16px  : 1rem;
+$size-20px  : 1.25rem;
+$size-24px  : 1.5rem;
+
+$size-32px  : 2rem;
+$size-40px  : 2.5rem;
+
+// Font Weight
+$weight-thin    : 200;
+$weight-regular : 400;
+$weight-medium  : 500;
+$weight-bold    : 700;
+$weight-black   : 900;
+
+// Colors base
+$color-black-base : #333;
+$color-white-base : #F1F1F2;
+
+$color-black-text : #333;
+$color-white-text : #F1F1F2;
+$color-gray-text  : #7D7A7B;
+$color-white-button : #F1F1F2;
+
+$color-status-disabled: #D4D4D4;
+$color-status-active: #8F6244;
+
+$color-black-background : #333;
+$color-white-background : #F1F1F2;
+
+$color-dots-disabled    : #635E60;
+$color-dots-active      : #CEA183; 
+
+$color-primary-dark     : #8F6244;
+$color-secundary-normal : #CEA183;
+$color-terciary-light   : #E8D6CA;
+
+$shadow-base: 0px 4px 19px rgba(0, 0, 0, 0.25), 0px 4px 16px rgba(143, 98, 68, 0.8);
+
+// Media query size
+$media-medium   : 800px;
+$media-small    : 600px;

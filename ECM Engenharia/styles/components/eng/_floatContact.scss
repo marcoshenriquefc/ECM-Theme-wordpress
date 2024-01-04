@@ -1,0 +1,19 @@
+#float-contacts {
+    position: fixed;
+    bottom: 0;
+    right: remConverter(24);
+    z-index: 500;
+    .float-item-contact {
+        display: inline-block;
+        font-size: remConverter(12);
+        text-decoration: none;
+        padding: remConverter(8) remConverter(12);
+    
+        color: white;
+    
+        background-color: #141416;
+        &:last-child {
+            background-color: #916246;
+        }
+    }
+}

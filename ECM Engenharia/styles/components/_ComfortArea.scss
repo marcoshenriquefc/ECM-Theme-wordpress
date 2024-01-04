@@ -1,0 +1,54 @@
+#comfort {
+  display: flex;
+  flex-direction: column;
+  gap: remConverter(32);
+
+  .comfort-text {
+    text-align: center;
+    font-size: remConverter(48);
+  }
+
+  .comfort-area {
+    column-count: 3;
+    gap: remConverter(32);
+    align-items: flex-end;
+
+    .comfort-image {
+      border-radius: remConverter(8);
+      width: 100%;
+      margin-bottom: remConverter(20);
+
+      &:first-child {
+        margin-top: remConverter(40);
+      }
+    }
+
+    .button {
+      width: 100%;
+    }
+  }
+}
+
+
+
+@media (max-width:remConverter(750)) {
+  #comfort {
+    .comfort-area {
+      column-count: 2;
+    }
+  }
+}
+
+@media (max-width:remConverter(500)) {
+  #comfort {
+    .comfort-area {
+      column-count: 1;
+
+      .comfort-image {
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

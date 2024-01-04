@@ -1,0 +1,109 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+
+#info-area {
+    padding: $size-20px 0;
+
+    .info-box {
+        display: flex;
+        flex-direction: column;
+        gap: remConvert(58);
+    }
+    .title-item {
+        font-size: $size-40px;
+        color: $color-black-text;
+    }
+
+    .content-info {
+        .title {
+            display: flex;
+            align-items: center;
+            gap: $size-12px;
+            font-size: $size-32px;
+
+            color: $color-black-text;
+
+            margin-bottom: $size-16px;
+            &::before {
+                content: '';
+                display: block;
+
+                background-color: $color-primary-dark;
+                height: 100%;
+                min-height: $size-32px;
+                width: remConvert(5);
+            }
+        }
+
+        .text {
+            text-align: justify;
+            color: $color-black-text;
+            padding: 0 $size-8px;
+
+            white-space: pre-line;
+
+            max-width: 85%;
+        }
+
+        .list-text {
+            color: $color-black-text;
+            padding: 0 $size-20px;
+            padding-right: $size-8px;
+
+            max-width: 85%;
+
+            li {
+                margin-bottom: $size-8px;
+            }
+        }
+    }
+
+    .black-section {
+        .content-info {
+            .title {
+                color: $color-white-text;
+                margin-bottom: $size-16px;
+
+                &::before {
+                    background-color: $color-secundary-normal;
+                }
+            }
+
+            .text,
+            .list-text {
+                color: $color-white-text;
+            }
+        }
+    }
+
+    &.no-padding-botom {
+        padding-bottom: 0;
+    }
+}
+
+
+@media screen and (max-width: $media-small) {
+    
+    #info-area {
+        .title-item {
+            font-size: $size-32px;
+        }
+
+        .info-box {
+            gap: $size-40px;
+        }
+        .content-info {
+            .title {
+                font-size: $size-24px;
+                &::before {
+                    max-height: $size-24px;
+                }
+            }
+
+            .text {
+                max-width: none;
+            }
+        }
+    }
+}

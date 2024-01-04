@@ -1,0 +1,30 @@
+#product-area {
+
+    .product-list {
+        list-style: none;
+    
+        gap: 0;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid lightgray;
+
+        .product-item {
+            width: 100%;
+            cursor: pointer;
+            .styled-check {
+                display: flex;
+                justify-content: space-between;
+                padding: remConverter(12) remConverter(20);
+
+                .left-data {
+                    display: flex;
+                    gap: remConverter(8);
+                }
+            }
+    
+            &:not(:last-child) {
+                border-bottom: 1px solid lightgray;
+            }
+        }
+    }
+}

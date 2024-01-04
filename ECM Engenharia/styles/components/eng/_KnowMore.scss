@@ -1,0 +1,143 @@
+#know-more {
+    padding: remConverter(44) 0;
+    background-position: center;
+    background-size: cover;
+
+
+    .know-more-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: remConverter(24);
+
+        .know-more-title {
+            .title-base {
+                // font-size: remConverter(24);
+                // font-weight: 400;
+
+                // text-align: center;
+                // align-items: center;
+                // justify-content: center;
+                // gap: remConverter(8);
+
+                // margin-bottom: remConverter(20);
+
+                span {
+                    // font-size: remConverter(24);
+                    // font-weight: 500;
+
+                    &.divisor {
+                        color: #8F6244;
+                    }
+                }
+
+
+            }
+        }
+
+        .element-icon {
+            max-width: 60px;
+            max-height: 60px;
+            width: 100%;
+            object-fit: contain;
+            height: 100%;
+        }
+
+
+        .know-more-element-area {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-items: center;
+            gap: remConverter(24);
+            width: 100%;
+
+            .know-more-element {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 1rem;
+                width: 100%;
+                min-height: 400px;
+                justify-content: end;
+                background: linear-gradient(180deg, rgba(143, 98, 68, 0.04) 45.83%, #8F6244 100%, rgba(143, 98, 68, 0.5) 100%);
+                border-radius: remConverter(12) remConverter(12) 0 0;
+                overflow: hidden;
+                
+                padding: remConverter(24);
+
+                position: relative;
+
+                .info-element {
+                    z-index: 3;
+                }
+
+                .element-background-image {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    z-index: 1;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .element-title {
+                    font-size: remConverter(16);
+                    font-weight: 500;
+
+                    margin-bottom: remConverter(8);
+                    color: white;
+
+                }
+
+                .element-description {
+                    color: white;
+                    font-size: remConverter(12);
+                    font-weight: 400;
+                    text-align: start;
+                }
+            }
+        }
+
+        .know-more-button {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+
+            button {
+                width: 30%;
+                height: 50px;
+                background-color: #8F6244;
+                color: #FFF;
+                font-size: remConverter(16);
+                font-weight: 700;
+                border: none;
+                border-radius: 24px;
+                transition: all .3s;
+
+                &:hover {
+                    background-color: #FFF;
+                    color: #8F6244;
+                    border: 1px solid #8F6244;
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: remConverter(750)) {
+    #know-more {
+        .know-more-section {
+            .know-more-element-area {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                .know-more-element {
+                    min-height: 300px;
+                }
+            }
+        }
+    }
+}

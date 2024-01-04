@@ -1,0 +1,133 @@
+@import '../abstract/functions';
+
+#carrossel-hero {
+  width: 100%;
+  max-width: remConverter(1450);
+  margin: 0 auto;
+
+  margin-bottom: remConverter(40);
+
+  .banner-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 600px;
+
+
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      &.mobile {
+        display: none;
+      }
+    }
+
+    .banner-dots-area {
+      display: flex;
+      gap: remConverter(8);
+
+      position: absolute;
+      bottom: remConverter(24);
+
+      .banner-dot {
+        width: remConverter(48);
+        background-color: #D9D9D9;
+        display: inline-block;
+        height: remConverter(6);
+        transition: all .3s;
+
+        cursor: pointer;
+
+        &.active {
+          background-color: #976241;
+          box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.25);
+        }
+      }
+    }
+
+    .button {
+      position: absolute;
+      bottom: remConverter(80);
+    }
+
+    .banner-arrow {
+      border: none;
+      border-radius: 50%;
+
+      width: remConverter(40);
+      height: remConverter(40);
+
+      background-color: #976241;
+      opacity: .6;
+      color: white;
+      font-size: remConverter(20);
+      font-weight: 700;
+      transition: all .3s;
+
+      position: absolute;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+        transform: scale(1.1);
+        box-shadow: 0 0 10px #ce8f6880;
+      }
+
+      &.back-arrow {
+        right: remConverter(32);
+      }
+
+      &.next-arrow {
+        left: remConverter(32);
+      }
+    }
+
+    .banner-link {
+      display: inline-flex;
+      height: 100%;
+      width: 100%;
+      border-radius: 0 0 remConverter(32) remConverter(32);
+
+      overflow: hidden;
+    }
+
+  }
+}
+
+@media (max-width: remConverter(750)) {
+  #carrossel-hero {
+    padding-top: 100px;
+    .banner-area {
+      height: remConverter(500);
+      .banner-arrow {
+        &.back-arrow {
+          right: remConverter(8);
+          z-index: 2;
+        }
+  
+        &.next-arrow {
+          left: remConverter(8);
+          z-index: 2;
+        }
+      }
+  
+      .banner-link {
+        border-radius: remConverter(28);
+        .banner-image {
+          &.mobile {
+            display: flex;
+          }
+    
+          &.desktop {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

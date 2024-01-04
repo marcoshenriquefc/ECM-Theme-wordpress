@@ -1,0 +1,123 @@
+#content-account {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #FFF;
+    padding: remConverter(32) remConverter(40);
+    box-shadow: 0 remConverter(4) remConverter(22.5) 0 rgba(0, 0, 0, 0.05);
+
+    gap: remConverter(40);
+    width: 100%;
+
+    overflow-y: auto;
+
+    &.product-area-content {
+        flex-direction: row;
+
+        // }
+        hr {
+            height: remConverter(1);
+            border: none;
+            background-color: lightgray;
+        }
+
+        .block-info-account {
+            display: flex;
+            flex-direction: column;
+            gap: remConverter(16);
+
+            .button-area-account {
+                display: flex;
+                justify-content: end;
+
+            }
+        }
+
+        .column-account {
+            display: flex;
+            flex-direction: column;
+            gap: remConverter(20);
+        }
+
+        .second-title-account {
+            font-size: remConverter(20);
+            font-weight: 400;
+        }
+
+        .text-area-account {
+            display: flex;
+            align-items: center;
+            gap: remConverter(12);
+
+            hr {
+                height: remConverter(1);
+                border: none;
+                background: #333;
+            }
+        }
+
+        .input-content-account {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+        }
+
+        .row-account {
+            display: flex;
+            flex-direction: row;
+            gap: remConverter(20);
+        }
+    }
+
+    .block-info-account {
+        display: flex;
+        flex-direction: column;
+        gap: remConverter(16);
+
+        .button-area-account {
+            display: flex;
+            justify-content: end;
+        }
+
+        .input-content-account {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .row-account {
+            display: flex;
+            flex-direction: row;
+            gap: remConverter(20);
+        }
+
+        .column-account {
+            display: flex;
+            flex-direction: column;
+            gap: remConverter(20);
+        }
+    }
+
+
+    .label-base-account {
+        font-size: remConverter(16);
+
+        .required-account {
+            color: $color-green-light;
+        }
+    }
+
+    .input-base-account {
+        padding: remConverter(4) remConverter(12);
+        border: none;
+        border-radius: remConverter(4);
+        background: #EEE;
+        outline: $color-green-light;
+        resize: vertical;
+    }
+
+    textarea.input-base-account {
+        resize: vertical;
+    }
+}

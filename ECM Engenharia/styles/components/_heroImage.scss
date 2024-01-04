@@ -1,0 +1,100 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+
+#hero-image {
+    width: 100%;
+    background-color: $color-black-background;
+
+    .image-area {
+        position: relative;
+        height: remConvert(400);
+        
+        &::before {
+            background:linear-gradient(180deg, rgba(50, 48, 49, 0) 40%, rgba(50, 48, 49, 0.27) 65%, #333 96.67%);
+            position: absolute;
+            content: '';
+            display: block;
+            bottom: 0;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+
+            z-index: 2;
+        }
+
+        .status-banner {
+            position: absolute;
+            left: 0;
+            top: $size-40px;
+            
+            background: linear-gradient(90deg, #261C15 0%, #906345 11.25%), #8F6244;
+            box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.35);
+
+            padding: $size-4px $size-32px;
+
+            font-size: $size-20px;
+            font-weight: $weight-bold;
+            color: $color-white-text;
+            border-radius: 0 $size-4px  $size-4px 0;
+
+            z-index: 3;
+        }
+
+        .logo-banner {
+            position: absolute;
+
+            width: 100%;
+            max-width: remConvert(250);
+            max-height: remConvert(100);
+
+            z-index: 3;
+
+            bottom: $size-40px;
+            right: $size-40px;
+        }
+        @include imageCover()
+    }
+}
+
+
+@media screen and (max-width: $media-medium) {
+    #hero-image {
+        .image-area {
+            .logo-banner {
+                max-width: remConvert(200);
+                max-height: remConvert(80);
+            }
+        }
+        
+        .image-banner {
+            padding: 0;
+        }
+
+    }
+}
+
+@media screen and (max-width: $media-small) {
+    #hero-image {
+        .image-area {
+            height: remConvert(350);
+
+            .status-banner {
+                font-size: $size-16px;
+                padding: $size-4px $size-20px;
+            }
+
+            .logo-banner {
+                max-width: remConvert(180);
+                max-height: remConvert(72);
+
+                right: 0;
+                left: 0;
+                
+                margin: 0 auto;
+            }
+
+        }
+    }
+}

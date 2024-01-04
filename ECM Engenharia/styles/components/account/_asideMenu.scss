@@ -1,0 +1,50 @@
+.navegation-aside-account {
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: remConverter(8);
+        list-style: none;
+    
+        .item-menu-account {
+            a {
+                display: flex;
+                align-items: center;
+                width: 100%;
+
+                gap: remConverter(8);
+                padding: remConverter(8) remConverter(12);
+                
+                color: $black-default;
+                text-decoration: none;
+
+                font-size: remConverter(16);
+                
+                svg {
+                    width: remConverter(20);
+                    height: remConverter(20);
+                    min-width: remConverter(20);
+                    min-height: remConverter(20);
+                }
+                path {
+                    fill: $black-default;
+                }
+            }
+
+            &:hover a {
+                background-color: #f8f8f8;
+                color: #414141;
+                path {
+                    fill: #414141;
+                }
+            }
+
+            &.active a {
+                background-color: #DAE6EA;
+                color: $color-blue-medium;
+                path {
+                    fill : $color-blue-medium;
+                }
+            }
+        }
+    }
+}

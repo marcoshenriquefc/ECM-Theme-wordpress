@@ -1,0 +1,71 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+@import '../abstract/animation';
+
+#address {
+    .content-area {
+        position: relative;
+        text-align: center;
+        width: fit-content;
+
+        margin: 0 auto;
+        margin-top: calc($size-24px * -1);
+        margin-bottom: $size-24px;
+
+        z-index: 2;
+        .location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: $color-primary-dark;
+            padding: $size-8px remConvert(48);
+            border-radius: $size-4px;
+            box-shadow: 6px 4px 20px rgba(0, 0, 0, 0.35);
+            
+            gap: $size-20px;
+            margin-bottom: $size-12px;
+
+            .title {
+                font-size: $size-40px;
+                font-weight: $weight-bold;
+
+                color: $color-white-text;
+            }
+
+        }
+        .full-address {
+            font-size: $size-16px;
+            font-weight: $weight-bold;
+        }
+    }
+}
+
+
+@media screen and (max-width: $media-medium) {
+    #address {
+        .content-area {
+            .location {
+                padding: $size-8px $size-24px;
+                .title {
+                    font-size: $size-24px;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: $media-small) {
+    #address {
+        .content-area {
+            .location {
+                padding: $size-8px $size-20px;
+                .title {
+                    font-size: $size-20px;
+                }
+            }
+        }
+    }
+}

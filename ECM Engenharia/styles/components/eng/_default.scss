@@ -1,0 +1,27 @@
+.title-base-eng,
+.title-base-eng * {
+    font-size: remConverter(32);
+    font-weight: 400;
+    text-align: center;
+
+    span, strong {
+        font-weight: 700;
+        color: #8F6244;
+    }
+
+    &.cursive {
+        span, strong {
+            font-family: "scotland", cursive;
+            font-size: remConverter(70);
+            line-height: 85%;
+            font-weight: 200;
+        }
+    }
+}
+
+@media (max-width : remConverter(750)) {
+    .title-base-eng {
+        font-size: remConverter(24);
+        font-weight: 400;
+    }
+}

@@ -1,0 +1,83 @@
+@import '../abstract/functions';
+
+#text-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .text-area {
+        text-transform: uppercase;
+        transform: translateX(remConverter(-20));
+
+        .top-text {
+            margin-right: remConverter(40);
+            font-size: remConverter(64);
+            font-weight: 200;
+            width: 100%;
+            text-align: start;
+
+            span {
+                color: #976241;
+                font-weight: 600;
+                font-size: remConverter(48);
+            }
+        }
+
+        .bottom-text {
+            margin-left: remConverter(40);
+            font-size: remConverter(64);
+            font-weight: 500;
+            width: 100%;
+            text-align: end;
+
+            margin-top: remConverter(-40);
+        }
+    }
+}
+
+
+@media (max-width : remConverter(750)) {
+    #text-decoration {
+        .text-area {
+            .top-text {
+                font-size: remConverter(36);
+                margin-right: remConverter(24);
+
+                span {
+                    font-size: remConverter(20);
+                }
+            }
+
+            .bottom-text {
+                font-size: remConverter(36);
+
+                margin-left: remConverter(24);
+                margin-top: remConverter(-16);
+            }
+        }
+    }
+
+}
+
+@media (max-width : remConverter(500)) {
+    #text-decoration {
+        .text-area {
+            .top-text {
+                font-size: remConverter(28);
+                margin-right: remConverter(20);
+
+                span {
+                    font-size: remConverter(20);
+                }
+            }
+
+            .bottom-text {
+                font-size: remConverter(28);
+
+                margin-left: remConverter(20);
+                margin-top: remConverter(-16);
+            }
+        }
+    }
+
+}

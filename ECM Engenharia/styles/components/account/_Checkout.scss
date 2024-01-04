@@ -1,0 +1,84 @@
+.woocommerce-checkout {
+    display: flex;
+    flex-direction: column;
+    gap: remConverter(32);
+    
+    .woocommerce-billing-fields__field-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: remConverter(20);
+        margin: remConverter(20) 0;
+    
+        .box-checkout-input {
+            display: flex;
+            flex-direction: column;
+            gap: remConverter(4);
+            abbr {
+                color: rgb(160, 2, 2);
+            }
+            
+            input {
+                width: 100%;
+                width: 100%;
+                padding: remConverter(4) remConverter(16);
+                font-size: remConverter(16);
+                border: remConverter(1) solid #aaa;
+                border-radius: 0;
+            }
+    
+            .selection ~ span {
+                height: auto;
+                padding: remConverter(4) remConverter(16);
+                border-radius: 0;
+            }
+        }
+    }
+    
+    #order_review {
+        margin: remConverter(20) 0;
+        display: flex;
+        flex-direction: column;
+        gap: remConverter(20);
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            th,td {
+                text-align: start;
+                font-size: remConverter(20);
+                padding: remConverter(8) remConverter(12);
+    
+                .variation {
+                    margin-top: remConverter(12);
+                }
+            }
+            td {
+                font-size: remConverter(16);
+            }
+            thead {
+                background: #6BA8C8;
+            }
+        }
+    
+        #payment {
+            background: none;
+    
+            .place-order {
+                display: flex;
+                flex-direction: column;
+                gap: remConverter(12);
+    
+                .button#place_order {
+                    background-color: #3A74BD;
+                    align-self: end;
+                    padding: 0.5rem 1.25rem;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    color: #FFF;
+                    letter-spacing: 0.05625rem;
+                    border: none;
+                }
+            }
+        }
+    }
+}
+

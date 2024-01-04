@@ -1,0 +1,76 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+
+#about-section {
+    display: flex;
+    gap: $size-20px;
+
+    padding: $size-40px $size-16px;
+
+    .image-area {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex: 1;
+        border-radius: $size-16px;
+        overflow: hidden;
+
+        box-shadow: calc($size-16px * -1) $size-16px 0 $color-primary-dark;
+        margin-left: $size-24px;
+        margin-top: $size-24px;
+        margin-bottom: $size-16px;
+
+        @include imageCover()
+    }
+
+    .text-area {
+        flex: 1;
+
+        .title-section {
+            text-align: center;
+            font-size: remConvert(50);
+            
+            color: $color-black-text;
+
+            margin-bottom: $size-12px;
+        }
+
+        .text {
+            white-space: pre-line;
+            font-size: $size-16px;
+
+            font-weight: $weight-regular;
+
+            padding: 0 $size-32px;
+        }
+    }
+}
+
+@media screen and (max-width: $media-medium) {
+    #about-section {
+        flex-direction: column;
+        .text-area {
+            .title-section {
+                font-size: $size-40px;
+                margin-bottom: 0;
+                margin-top: $size-24px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $media-small) {
+    #about-section {
+        padding: $size-32px $size-20px;
+        .text-area {
+            .title-section {
+                font-size: $size-32px;
+            }
+            .text {
+                padding: 0;
+            }
+        }
+    }
+}

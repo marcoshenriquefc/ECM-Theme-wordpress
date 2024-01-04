@@ -1,0 +1,97 @@
+.box-rentability {
+    padding: remConverter(70) 0;
+    .text-rentability {
+        display: flex;
+        gap: remConverter(40);
+        .image-area{
+            flex: 1;
+            position: relative;
+            .polaroid {
+                position: absolute;
+                top: remConverter(-48);
+                right: 0;
+                transform: rotate(15deg) translateX(remConverter(-35));
+                height: remConverter(386);
+                width: remConverter(324);
+                object-fit: cover;
+                box-shadow: -12px -12px 25px rgba(0, 0, 0, 0.1);
+            }
+        }
+    
+        .text-area {
+            flex: 2;
+            padding: remConverter(32) 0;
+            * {
+                font-size: remConverter(24);
+            }
+        }
+    
+        &.reverse {
+            flex-direction: row-reverse;
+            .image-area .polaroid {
+                left: 0;
+                transform: rotate(-15deg) translateX(remConverter(35));
+                object-fit: cover;
+            }
+        }
+    }
+
+    &.colored {
+        background-color: #8b5b43;
+        
+        .text-area {
+            * {
+                color: #F8F8F8;
+            }
+        }
+    }
+}
+
+.polaroid-area {
+    margin-bottom: remConverter(80);
+}
+
+@media(max-width:remConverter(750)) {
+    .box-rentability {
+        padding: 0;
+        padding: remConverter(32) 0;
+        .text-rentability {
+            gap: remConverter(32);
+            flex-direction: column;
+            .image-area {
+                display: flex;
+                position: inherit;
+                justify-content: center;
+                transform: rotate(0);
+                top: 0;
+
+                .polaroid {
+                    top: 0;
+                    position: inherit;
+                    transform: none;
+                    max-width: 100%;
+                    height: auto;
+
+                }
+            }
+
+            .text-area {
+                padding: 0;
+                * {
+                    font-size: remConverter(20);
+                }
+            }
+
+            &.reverse {
+                flex-direction: column;
+                .image-area .polaroid {
+                    top: 0;
+                    position: inherit;
+                    transform: none;
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}

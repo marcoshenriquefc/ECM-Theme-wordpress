@@ -1,0 +1,61 @@
+#hero-banner-image{
+    width: 100%;
+    background-color: #1D1D1B;
+    height: remConverter(500);
+
+    .banner-area{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 100%;
+        .banner{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .overflow-banner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: #1d1d1b83;
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .logo-banner {
+            width: 45%;
+            max-height: 60%;
+            object-fit: contain;
+        }
+    }
+}
+
+@media( max-width: remConverter(750)) {
+    #hero-banner-image{
+        .overflow-banner {
+            .logo-banner {
+                width: 60%;
+                max-height: 40%;
+            }
+        }
+    }
+}
+
+@media( max-width: remConverter(500)) {
+    #hero-banner-image{
+        height: remConverter(400);
+        .overflow-banner {
+            .logo-banner {
+                width: 70%;
+                max-height: 40%;
+            }
+        }
+    }
+}

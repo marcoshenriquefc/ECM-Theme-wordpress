@@ -1,0 +1,70 @@
+@import '../../abstract/functions';
+@import '../decor/variables';
+
+$black-default: #333;
+#main-base-account {
+    display: grid;
+    grid-template-columns: minmax(remConverter(200), remConverter(250)) minmax(remConverter(400), 1fr);
+    gap: remConverter(12);
+
+    background-color: #F2F2F2;
+    padding: remConverter(24) remConverter(16);
+
+    min-height: calc(100vh - remConverter(95));
+    min-height: calc(100dvh - remConverter(95));
+    height: 100%;
+
+    .title-default-account {
+        font-size: remConverter(28);
+        color: $black-default;
+        text-transform: uppercase;
+    }
+
+    .aside-account{
+        display: flex;
+        flex-direction: column;
+        gap: remConverter(24);
+
+
+        width: 100%;
+        max-width: remConverter(240);
+        min-width: remConverter(200);
+        padding-top: remConverter(32);
+    }
+
+    &.full-width {
+        grid-template-columns: 1fr;
+    }
+}
+
+.button-decor-account {
+    border: none;
+    font-size: remConverter(16);
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+    &.primary {
+        padding: remConverter(4) remConverter(20);
+        text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 0.9px;
+
+        background-color: $color-green-light;
+        color: white;
+    }
+
+    &.terciary {
+        text-decoration: underline;
+        color: $color-blue-medium;
+    }
+}
+
+@media(max-width : $media-medium) {
+    #main-base-account {
+        grid-template-columns: 1fr ;
+        .aside-account {
+            max-width: none;
+        }
+    }
+}

@@ -1,0 +1,122 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+
+#photo-galery {
+    &.black-section {
+        padding: $size-40px 0;
+
+        #dots-galery {
+            .glider-dot{
+                background: $color-dots-disabled;
+                &.active{
+                    background: $color-dots-active;   
+                }
+            }
+        }
+    }
+
+    .galery {
+        display: flex;
+        align-items: center;
+
+        .carrossel-area {
+            overflow: hidden;
+            width: 100%;
+            margin: 0 $size-12px;
+            border-radius: $size-16px;
+            overflow: hidden;
+            .image-area {
+                height: remConvert(600);
+                @include imageCover
+            }
+        }
+
+        .button-galery {
+            width: $size-40px;
+            height: $size-40px;
+            border-radius: 50%;
+            border: none;
+
+            background: none;
+            cursor: pointer;
+
+            svg {
+                max-width: 100%;
+                max-height: 100%;
+                path {
+                    transition: all .3s;
+                    fill: $color-secundary-normal;
+                }
+            }
+
+            
+            &.disabled {
+                opacity: .3;
+                svg {
+                    path {
+                        fill: $color-gray-text;
+                    }
+                }
+            }
+        }
+    }
+    
+    #dots-galery {
+        .glider-dot{
+            background: $color-dots-disabled;
+            &.active{
+                background: $color-dots-active;   
+            }
+        }
+    }
+
+    .glider {
+        scrollbar-width: none;          /* "auto" or "thin" */
+        scrollbar-color: rgba(0, 0, 74, 0) rgba(47, 0, 255, 0);   /* scroll thumb and track */ 
+        
+        &::-webkit-scrollbar {
+            width: 0;               /* width of the entire scrollbar */
+          }
+          
+          &::-webkit-scrollbar-track {
+            background: rgba(0, 0, 74, 0);        /* color of the tracking area */
+          }
+          
+          &::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 74, 0);    /* color of the scroll thumb */
+            border: none;  /* creates padding around scroll thumb */
+          }
+          
+    }
+    
+}
+
+
+@media screen and (max-width: $media-medium) {
+    #photo-galery {
+        .galery {
+            .carrossel-area {
+                margin: 0;
+                .image-area {
+                    height: remConvert(450);
+                }
+            }
+
+            .button-galery {
+                display: none;
+            }
+        }
+    }
+}
+@media screen and (max-width: $media-small) {
+    #photo-galery {
+        .galery {
+            .carrossel-area {
+                .image-area {
+                    height: remConvert(300);
+                }
+            }
+        }
+    }
+}

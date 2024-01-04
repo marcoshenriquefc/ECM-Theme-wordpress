@@ -1,0 +1,102 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+
+#status-box {
+    margin-top: calc($size-12px * -1);
+    margin-bottom: $size-16px;
+
+    .container {
+        max-width: remConvert(330);
+
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            padding-left: $size-20px ;
+
+            .step {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                position: relative;
+                z-index: 1;
+
+                &.active {
+                    .step-icon {
+                        background: $color-status-active;
+                    }
+
+                    p {
+                        color: $color-status-active;
+                    }
+                }
+
+                p {
+                    text-align: center;
+                    position: absolute;
+                    bottom: calc($size-24px * -1);
+                    color: $color-status-disabled;
+                    font-size: $size-12px;
+                    font-weight: $weight-regular;
+                    width: fit-content;
+
+                    min-width: remConvert(60);
+                }
+
+                .step-icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    height: remConvert(50);
+                    width: remConvert(50);
+
+                    font-weight: $weight-bold;
+
+                    border-radius: 50%;
+                    background-color: $color-status-disabled;
+                    font-size: $size-16px;
+                    text-align: center;
+                    color: $color-white-base;
+                    position: relative;
+                }
+            }
+
+            .indicator-line {
+                width: 100%;
+                height: remConvert(3);
+                background: $color-status-disabled;
+                flex: 1;
+
+                &.active {
+                    background-color: $color-status-active;
+                }
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #status-box {
+        .container {
+            max-width: remConvert(280);
+            .step-indicator {
+                padding: 0 $size-12px;
+                .step {
+                    .step-icon {
+                        width:$size-40px;
+                        height:$size-40px;
+
+                        font-size: $size-12px;
+                    }
+
+                    .indicator-line {
+                        height: remConvert(2);
+                    }
+                }
+            }
+        }
+
+    }
+}

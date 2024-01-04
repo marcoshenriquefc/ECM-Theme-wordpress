@@ -1,0 +1,24 @@
+.social-media-area {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: remConverter(8);
+    margin-top: remConverter(12);
+    flex-wrap: wrap;
+    .link-social {
+        width: remConverter(50);
+        height: remConverter(50);
+        
+        background-color: #8F6244;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+
+        img {
+            width: remConverter(24);
+            height: remConverter(24);
+        }
+    }
+}

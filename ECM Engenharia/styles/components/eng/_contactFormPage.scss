@@ -1,0 +1,44 @@
+.text-form {
+    margin-bottom: remConverter(32);
+    .title-base-eng {
+        text-align: start;
+    }
+    p {
+        font-size: remConverter(20);
+    }
+}
+
+.form-default-page {
+    display: flex;
+    flex-direction: column;
+    gap: remConverter(16);
+    font-size: remConverter(20);
+    label {
+        display: flex;
+        flex-direction: column;
+        gap: remConverter(4);
+        font-family: "Gotham", sans-serif;
+
+        input,textarea {
+            background: #D9D9D9;
+            border: none;
+            font-size: remConverter(20);
+            border-radius: 0;
+            padding: remConverter(8) remConverter(16);
+        }
+        
+    }
+    input[type=submit],
+    .button-form-submit{
+        padding: remConverter(4) remConverter(12);
+        background-color: #608FAD;
+        color: white;
+        text-decoration: none;
+        font-size: remConverter(20);
+        border: none;
+        transition: all 0.3s;
+        cursor: pointer;
+        width: fit-content;
+        margin-left: auto;
+    }
+}

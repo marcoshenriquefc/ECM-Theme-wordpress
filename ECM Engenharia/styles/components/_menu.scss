@@ -1,0 +1,161 @@
+@import '../abstract/variable';
+
+#menuMain {
+    .center-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &.no-bg {
+        padding: $size-40px $size-12px;
+        padding-bottom: $size-20px;
+
+        background-color: $color-black-background;
+    }
+
+    #menulogo {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        height: 100%;
+
+        max-width: 120px;
+        max-height: 35px;
+
+        img {
+            width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    .menu-nav {
+        ul {
+            display: flex;
+            align-items: center;
+
+            gap: $size-12px;
+            list-style: none;
+
+            .menu-item {
+                color: $color-white-text;
+                text-decoration: none;
+
+                padding: $size-4px $size-12px;
+                font-weight: $weight-regular;
+
+                &:hover {
+                    opacity: .7;
+                }
+            }
+        }
+    }
+
+}
+
+
+@media screen and (max-width: $media-small) {
+    #menuMain {
+        position: relative;
+        padding-top: $size-40px;
+        padding-bottom: $size-12px ;
+
+        transition: background-color .3s;
+
+        .menu-nav {
+            position: absolute;
+            top: calc(30px + $size-40px);
+            right: 0;
+
+            width: 0;
+
+            overflow: hidden;
+            transition: all .3s;
+
+            background-color: $color-black-background;
+            z-index: 5;
+
+            ul {
+                flex-direction: column;
+                padding: $size-20px $size-8px;
+                background-color: $color-black-background;
+            }
+        }
+        
+        .menu-hamburguer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 18px;
+            width: 30px;
+            cursor: pointer;
+
+            span {
+                display: block;
+                width: 100%;
+                height: 3px;
+                background-color: $color-secundary-normal;
+                transition: transform .5s, opacity 0.3s;
+                
+
+                &:nth-child(1) {
+                    transform-origin: top left;
+                }
+
+                &:nth-child(2) {
+                    transform-origin: left;
+                    transition: all .3s;
+                }
+
+                &:nth-child(3) {
+                    transform-origin: bottom left;
+                }
+            }
+        }
+        
+        &.active {
+            background-color: $color-black-background;
+
+            .menu-nav {
+                width: 100%;
+
+                ul {
+
+                    li {
+                        width: 100%;
+
+                        a {
+                            display: inline-block;
+                            width: 100%;
+                            padding: $size-8px;
+                            border-radius: $size-8px;
+
+                            &:not(.buttonBase) {
+                                &:hover {
+                                    background-color: $color-terciary-light;
+                                    color: $color-primary-dark;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            span {
+                &:nth-child(1) {
+                    transform: translateY(-3px) rotate(45deg);
+                }
+
+                &:nth-child(2) {
+                    transform: scaleX(0);
+                }
+
+                &:nth-child(3) {
+                    transform: translateY(3px) rotate(-45deg) ;
+                }
+            }
+        }
+
+    }
+}

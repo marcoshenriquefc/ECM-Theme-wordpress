@@ -1,0 +1,102 @@
+
+#characteristics-empreendimento {
+    background-color: #1D1D1B;
+    padding: remConverter(40) 0;
+    .characteristics-area {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: remConverter(40);
+    
+        .title-characteristics {
+            font-size: remConverter(24);
+            font-weight: 500;
+            color: white;
+            &::after {
+                content: '';
+                display: block;
+                width: remConverter(40);
+                height: remConverter(4);
+                background-color: #8F6244;
+            }
+        }
+    
+        .cards-area {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: remConverter(24);
+    
+            .characteristics-card-item {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: remConverter(12);
+    
+                .icon-box {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    width: remConverter(68);
+                    height: remConverter(68);
+
+                    min-width: remConverter(68);
+                    min-height: remConverter(68);
+
+                    border-radius: 50%;
+                    background-color: #8F6244;
+                    .icon {
+                        width: remConverter(44);
+                        height: remConverter(44);
+                        object-fit: contain;
+                    }
+                }
+                .text {
+                    color: #565656;
+                    text-align: start;
+                    font-size: remConverter(24);
+                    color: white;
+                }
+            }
+        }
+    
+    }
+}
+
+@media (max-width : remConverter(750)) {
+    #characteristics-empreendimento{
+        .characteristics-area {
+            .cards-area {
+                grid-template-columns: repeat(2, 1fr);
+                .characteristics-card-item {
+                    .icon-box {
+                        width: remConverter(50);
+                        height: remConverter(50);
+    
+                        min-width: remConverter(50);
+                        min-height: remConverter(50);
+
+                        .icon {
+                            width: remConverter(32);
+                            height: remConverter(32);
+                        }
+                    }
+
+                    .text {
+                        font-size: remConverter(16);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width : remConverter(500)) {
+    #characteristics-empreendimento{
+        .characteristics-area {
+            .cards-area {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}

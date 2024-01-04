@@ -1,0 +1,35 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+@import '../abstract/animation';
+
+#footer-main {
+  padding-top: $size-40px;
+  padding-bottom: $size-40px;
+  .slogan {
+    text-align: center;
+    padding: $size-20px $size-12px;
+    p {
+      color: $color-white-text;
+      .text-strong {
+        font-weight: $weight-regular !important;
+      }
+    }
+  }
+
+  .footer-nav {
+    display: flex;
+    min-height: remConvert(200);
+    justify-content: end;
+    align-items: end;
+  }
+
+  p {
+    font-size: $size-12px;
+    color: $color-white-text;
+    text-align: center;
+    a {
+      color: $color-secundary-normal;
+    }
+  }
+}

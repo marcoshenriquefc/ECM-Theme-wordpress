@@ -1,0 +1,105 @@
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: remConverter(32);
+
+
+    .card-product-account {
+        background: #FFF;
+        box-shadow: 0 remConverter(4) remConverter(24) 0 rgba(0, 47, 44, 0.14);
+        .image-product {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            height: remConverter(120);
+            width: 100%;
+
+            .tag-finished {
+                display: none;
+                position: absolute;
+                top: 0;
+                margin: 0 auto;
+
+                color: #FFF;
+                font-size: remConverter(12);
+                background: #B85B46;
+                padding: remConverter(4) remConverter(8);
+                box-shadow: remConverter(0) remConverter(5) remConverter(8) remConverter(0) rgba(0, 0, 0, 0.25);
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .card-product-date {
+            text-align: center;
+            padding: remConverter(4) remConverter(8);
+            background-color: $color-blue-light;
+            color: #fff;
+        }
+        .card-product-content {
+            display: flex;
+            flex-direction: column;
+            gap: remConverter(8);
+
+            padding: remConverter(8) remConverter(12);
+            padding-bottom: remConverter(12);
+            text-align: center;
+
+            .card-title {
+                font-size: remContent(20);
+            }
+    
+            .card-category {
+                color: $color-blue-secondlight;
+                font-size: remConverter(16);
+            }
+    
+            .card-button {
+                padding: remConverter(4) remConverter(20);
+                text-decoration: none;
+
+                background-color: $color-blue-medium;
+
+                font-size: remConverter(12);
+                color: white;
+                border: none;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
+        }
+
+        &.disabled {
+            box-shadow: 0 remConverter(4) remConverter(24) 0 rgba(0, 47, 44, 0.05);
+            .image-product {
+                .tag-finished {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    margin: 0 auto;
+    
+                    color: #FFF;
+                    font-size: remConverter(12);
+                    background: #B85B46;
+                    padding: remConverter(4) remConverter(8);
+                    box-shadow: remConverter(0) remConverter(5) remConverter(8) remConverter(0) rgba(0, 0, 0, 0.25);
+                }
+            }
+
+            .card-product-date {
+                background-color: $color-light-gray;
+                color: $color-medium-gray;
+            }
+
+            .card-product-content {
+                .card-button {
+                    background-color: $color-light-gray;
+                    color: $color-medium-gray;
+                }
+            }
+        }
+    }
+}

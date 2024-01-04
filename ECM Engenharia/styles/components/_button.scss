@@ -1,0 +1,44 @@
+@import '../abstract/variable';
+
+.buttonBase {
+    display: block;
+    text-decoration: none;
+    border: none;
+    background: none;
+
+    width: fit-content;
+    cursor: pointer;
+    &.primary {
+        padding: $size-8px $size-24px;
+
+        border-radius: $size-8px;
+
+        background-color: $color-primary-dark;
+        color: $color-white-button;
+        font-weight: $weight-bold;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+
+    &.secundary {
+        padding: $size-8px $size-24px;
+
+        border-radius: $size-8px;
+        border: 2px solid $color-primary-dark;
+
+        color: $color-primary-dark;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+
+    &.terciary {
+        padding: 0;
+        text-decoration: underline;
+
+        color: $color-black-text;
+    }
+}

@@ -1,0 +1,43 @@
+@import '../abstract/variable';
+@import '../abstract/mixins';
+@import '../abstract/functions';
+
+#other-ventures {
+    .cards-area {
+        display: grid;
+        grid-template-columns: repeat( auto-fit, minmax(remConvert(300), 1fr));
+
+        gap: $size-32px;
+        justify-content: space-between;
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: $size-8px;
+            .image-area {
+                border-radius: $size-8px;
+                overflow: hidden;
+                height: remConvert(170);
+                @include imageCover();
+            }
+            .title-card {
+                color: $color-white-base;
+                font-size: $size-20px;
+                @include maxTextLine(1)
+            }
+            .text-card {
+                font-size: $size-16px;
+                color: $color-white-base;
+                margin-bottom: $size-12px;
+                @include maxTextLine(2)
+            }
+        }
+    }
+    .center-section {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    &.black-section {
+        padding: $size-40px 0;
+    }
+}
